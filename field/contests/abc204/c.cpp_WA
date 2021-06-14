@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+ll N, M;
+vector<vector<ll>> route(2000, vector<ll>(2000));
+vector<vector<ll>> history(2000, vector<ll>(2000));
+
+ll route_count(ll start, ll current) {
+  ll count = 0;
+  for (int i=1; i<2000; i++) {
+    if (route[current][i] == true) {
+      if (history[start][i] == false) {
+        history[start][i] = true;
+        count++;
+        count += route_count(start, i);
+      }
+    }
+  }
+  return count;
+}
+
+int main() {
+  cin >> N >> M;
+
+  for (int i=0; i<N; i++) {
+    ll a, b;
+    cin >> a >> b;
+    route[a][b] = true;
+  }
+
+  ll count = N;
+  for (int i=0; i<N+1; i++) {
+    count += route_count(i, 1);
+  }
+
+  cout << count << endl;
+}
