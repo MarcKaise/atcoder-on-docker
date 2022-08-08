@@ -53,6 +53,7 @@
                 "${workspaceFolder}/tmp/a.out",
                 "-lstdc++",
                 "-g",
+                "-lm",
                 "&&",
                 "${workspaceFolder}/tmp/a.out",
                 "&&",
@@ -72,6 +73,7 @@
                 "${workspaceFolder}/tmp/a.out",
                 "-lstdc++",
                 "-g",
+                "-lm",
             ],
             "problemMatcher": []
         },
